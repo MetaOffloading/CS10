@@ -6,8 +6,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Random;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sam.webtasks.basictools.Names;
+import com.sam.webtasks.client.Params;
 import com.sam.webtasks.client.SequenceHandler;
 
 public class IOtask1Block {
@@ -21,6 +30,8 @@ public class IOtask1Block {
 	
 	//allow any circle to be moved?
 	public int offloadCondition=Names.REMINDERS_OPTIONAL;
+	
+	public boolean chooseOffloadCondition=false; //ask participant to choice their strategy
 
 	//what block number is this? Useful to store alongside performance data
 	public int blockNum=1;      
@@ -33,6 +44,9 @@ public class IOtask1Block {
 	
 	//should target feedback be shown, i.e. green for correct target response, red for incorrect
 	public boolean showTargetFeedback=true;
+	
+	//increment the progress bar with each trial
+	public boolean incrementProgress=false;
 	
 	//set up targets
 	public int nTargets=1;               //number of targets
@@ -83,6 +97,75 @@ public class IOtask1Block {
 		 */
 		SequenceHandler.SetLoop(2, true);
 		SequenceHandler.Next();
+	}
+	
+	public static void ChooseStrategy() {
+		String noReminder = "I will just remember by myself";
+		String prospective = "Double-click the circles to turn them blue";
+		String retrospective = "Use the reminder button at the top to type in text";
+		String both = "Drag the circles next to where they are supposed to go";
+		
+		final Button noReminder_button = new Button(noReminder);
+		final Button prospective_button = new Button(prospective);
+		final Button retrospective_button = new Button(retrospective);
+		final Button both_button = new Button(both);
+		
+		final HorizontalPanel hPanel1 = new HorizontalPanel();
+		final HorizontalPanel hPanel2 = new HorizontalPanel();
+		final VerticalPanel vPanel = new VerticalPanel();
+		
+		final VerticalPanel frame = new VerticalPanel();
+		
+		hPanel1.add(noReminder_button);
+		hPanel1.add(prospective_button);
+		hPanel2.add(retrospective_button);
+		hPanel2.add(both_button);
+		
+		vPanel.add(hPanel1);
+		vPanel.add(hPanel2);
+		
+		noReminder_button.addClickHandler(new ClickHandler() {
+	        public void onClick(ClickEvent event) {
+	        	IOtask1BlockContext.setOffloadCondition(Names.REMINDERS_NOTALLOWED);
+	        	
+	        	RootPanel.get().remove(vPanel);
+	        	
+	        	SequenceHandler.Next();
+	        }
+		});
+		
+		prospective_button.addClickHandler(new ClickHandler() {
+	        public void onClick(ClickEvent event) {
+	        	IOtask1BlockContext.setOffloadCondition(Names.REMINDERS_PROSPECTIVE_MANDATORY);
+	        	
+	        	RootPanel.get().remove(vPanel);
+	        	
+	        	SequenceHandler.Next();
+	        }
+		});
+		
+		retrospective_button.addClickHandler(new ClickHandler() {
+	        public void onClick(ClickEvent event) {
+	        	IOtask1BlockContext.setOffloadCondition(Names.REMINDERS_RETROSPECTIVE_MANDATORY);
+	        	
+	        	RootPanel.get().remove(vPanel);
+	        	
+	        	SequenceHandler.Next();
+	        }
+		});
+		
+		both_button.addClickHandler(new ClickHandler() {
+	        public void onClick(ClickEvent event) {
+	        	IOtask1BlockContext.setOffloadCondition(Names.REMINDERS_MANDATORY_ANYCIRCLE);
+	        	
+	        	RootPanel.get().remove(vPanel);
+	        	
+	        	SequenceHandler.Next();
+	        }
+		});
+	     
+		
+		RootPanel.get().add(vPanel);	
 	}
 	
 	//the variables below are used during trials of the task. they don't need to be set in advance

@@ -117,11 +117,16 @@ public class SequenceHandler {
 				block31.askArithmetic = true;
 				block31.Run();
 				break;
-			
+			case 10:
+				Slider.Run(Instructions.Get(81), "0%", "100%");
+				break;
+			case 11:
+				PHP.logData("slider_noreminder", ""+Slider.getSliderValue(), true);
+				break;		
 			/*************/
 			/*CONDITION 1*/
 			/*************/			
-			case 10:				
+			case 12:				
 				switch(SessionInfo.sequence[cb][0]) {
 				case Names.REMINDERS_NOTALLOWED:
 					i=4;
@@ -140,7 +145,7 @@ public class SequenceHandler {
 				ClickPage.Run(Instructions.Get(i), "Next");
 				
 				break;
-			case 11:
+			case 13:
 				IOtask1Block block4 = new IOtask1Block();
 				block4.nTargets = 3;
 				block4.nTrials = 1;
@@ -149,33 +154,15 @@ public class SequenceHandler {
 				block4.askArithmetic = true;
 				block4.Run();
 				break;
-			case 12:
+			case 14:
 				Slider.Run(Instructions.Get(81), "0%", "100%");
 				break;
-			case 13:
-				PHP.logData("slider" + SessionInfo.sequence[cb][0], ""+Slider.getSliderValue(), true);
-				break;
-			case 14:
-				ClickPage.Run(Instructions.Get(9), "Next");
-				break;
 			case 15:
-				ProgressBar.Initialise();
-				ProgressBar.Show();
-				ProgressBar.SetProgress(1, 8);
-				
-				IOtask1Block block5 = new IOtask1Block();
-				block5.nTargets = 3;
-				block5.nTrials = 5;
-				block5.offloadCondition = SessionInfo.sequence[cb][0];
-				block5.blockNum = 1;
-				block5.askArithmetic = true;
-				block5.Run();
-				break;
-				
+				PHP.logData("slider" + SessionInfo.sequence[cb][0], ""+Slider.getSliderValue(), true);
+				break;		
 				/*************/
 				/*CONDITION 2*/
-				/*************/
-				
+				/*************/		
 			case 16:
 				ProgressBar.SetProgress(2, 8);
 				
@@ -211,27 +198,11 @@ public class SequenceHandler {
 				break;
 			case 19:
 				PHP.logData("slider" + SessionInfo.sequence[cb][1], ""+Slider.getSliderValue(), true);
-				break;
-			case 20:
-				ClickPage.Run(Instructions.Get(9), "Next");
-				break;
-			case 21:
-				ProgressBar.SetProgress(3, 8);
-				
-				IOtask1Block block7 = new IOtask1Block();
-				block7.nTargets = 3;
-				block7.nTrials = 5;
-				block7.offloadCondition = SessionInfo.sequence[cb][1];
-				block7.blockNum = 2;
-				block7.askArithmetic = true;
-				block7.Run();
-				break;
-				
+				break;	
 				/*************/
 				/*CONDITION 3*/
-				/*************/
-				
-			case 22:
+				/*************/	
+			case 20:
 				switch(SessionInfo.sequence[cb][2]) {
 				case Names.REMINDERS_NOTALLOWED:
 					i=8;
@@ -250,9 +221,7 @@ public class SequenceHandler {
 				ClickPage.Run(Instructions.Get(i), "Next");
 				
 				break;		
-			case 23:
-				ProgressBar.SetProgress(4, 8);
-				
+			case 21:
 				IOtask1Block block8 = new IOtask1Block();
 				block8.nTargets = 3;
 				block8.nTrials = 1;
@@ -261,84 +230,34 @@ public class SequenceHandler {
 				block8.askArithmetic = true;
 				block8.Run();
 				break;
-			case 24:
+			case 22:
 				Slider.Run(Instructions.Get(81), "0%", "100%");
 				break;
-			case 25:
+			case 23:
 				PHP.logData("slider" + SessionInfo.sequence[cb][2], ""+Slider.getSliderValue(), true);
 				break;
-			case 26:
-				ClickPage.Run(Instructions.Get(9), "Next");
-				break;
-			case 27:
-				ProgressBar.SetProgress(5, 8);
+				/*********************/
+				/*EXPERIMENTAL TRIALS*/
+				/*********************/
+				
+			case 24:
+				ClickPage.Run(Instructions.Get(91), "Next");
+				break;		
+			case 25:
+				ProgressBar.Initialise();
+				ProgressBar.Show();
+				ProgressBar.SetProgress(0, 5);
 				
 				IOtask1Block block9 = new IOtask1Block();
 				block9.nTargets = 3;
 				block9.nTrials = 5;
-				block9.offloadCondition = SessionInfo.sequence[cb][2];
-				block9.blockNum = 3;
+				block9.chooseOffloadCondition = true;
+				block9.blockNum = 9;
 				block9.askArithmetic = true;
+				block9.incrementProgress = true;
 				block9.Run();
 				break;
-			
-				/*************/
-				/*CONDITION 4*/
-				/*************/
-				
-			case 28:
-				switch(SessionInfo.sequence[cb][3]) {
-				case Names.REMINDERS_NOTALLOWED:
-					i=8;
-					break;
-				case Names.REMINDERS_MANDATORY_ANYCIRCLE:
-					i=5;
-					break;
-				case Names.REMINDERS_PROSPECTIVE_MANDATORY:
-					i=6;
-					break;
-				case Names.REMINDERS_RETROSPECTIVE_MANDATORY:
-					i=7;
-					break;			
-				}
-				
-				ClickPage.Run(Instructions.Get(i), "Next");
-				
-				break;		
-			case 29:
-				ProgressBar.SetProgress(6, 8);
-				
-				IOtask1Block block10 = new IOtask1Block();
-				block10.nTargets = 3;
-				block10.nTrials = 1;
-				block10.offloadCondition = SessionInfo.sequence[cb][3];
-				block10.blockNum = -7;
-				block10.askArithmetic = true;
-				block10.Run();
-				break;
-			case 30:
-				Slider.Run(Instructions.Get(81), "0%", "100%");
-				break;
-			case 31:
-				PHP.logData("slider" + SessionInfo.sequence[cb][3], ""+Slider.getSliderValue(), true);
-				break;
-			case 32:
-				ClickPage.Run(Instructions.Get(9), "Next");
-				break;
-			case 33:
-				ProgressBar.SetProgress(7, 8);
-				
-				IOtask1Block block11 = new IOtask1Block();
-				block11.nTargets = 3;
-				block11.nTrials = 5;
-				block11.offloadCondition = SessionInfo.sequence[cb][3];
-				block11.blockNum = 4;
-				block11.askArithmetic = true;
-				block11.Run();
-				break;
-			case 34:
-				ProgressBar.SetProgress(8, 8);
-				
+			case 26:
 				// log data and check that it saves
 				String data = TimeStamp.Now() + ",";
 				data = data + SessionInfo.participantID + ",";
@@ -349,7 +268,7 @@ public class SequenceHandler {
 				PHP.UpdateStatus("finished");
 				PHP.logData("finish", data, true);
 				break;
-			case 35:
+			case 27:
 				ProgressBar.Hide();
 				
 				ClickPage.Run(Instructions.Get(10), "nobutton");
@@ -431,9 +350,15 @@ public class SequenceHandler {
 
 				if (block.currentTrial == block.nTrials) {
 					SequenceHandler.SetLoop(0, false);
+					SequenceHandler.Next();
+				} else {
+					if (block.chooseOffloadCondition) {
+						IOtask1Block.ChooseStrategy();
+					} else {
+						SequenceHandler.Next();
+					}
 				}
-
-				SequenceHandler.Next();
+				
 				break;
 			case 2:
 				// now initialise trial and present instructions
@@ -444,6 +369,10 @@ public class SequenceHandler {
 				IOtask1RunTrial.Run();
 				break;
 			case 4:
+				if(IOtask1BlockContext.incrementProgress()) {
+					ProgressBar.Increment();
+				}
+				
 				// we have reached the end, so we need to restart the loop
 				SequenceHandler.SetLoop(2, true);
 				SequenceHandler.Next();

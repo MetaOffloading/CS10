@@ -100,6 +100,11 @@ public class Instructions {
 			i="Now you will do the task for real. Please continue doing the task as you did "
 					+ "in the practice trial just now.";
 			break;
+		case 91:
+			i="Now the experiment will start for real.<br><br>"
+					+ "From this point onwards, you will be able to choose which strategy to use. It is completely up to you,"
+					+ " just chose whichever one you think is best.<br><br>Click below to continue.";
+			break;
 		case 10:
 			i = "You have now completed this part of the experiment.<br><br>"
 					+ "<b><a href=\"https://research.sc/participant/login/dynamic/4A829951-3246-446A-89E5-FD17232E6F51?external_id="

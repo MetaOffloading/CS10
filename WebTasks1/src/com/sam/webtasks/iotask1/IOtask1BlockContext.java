@@ -76,6 +76,10 @@ public class IOtask1BlockContext {
 		}
 	}
 	
+	public static void setOffloadCondition(int offloadCondition) {
+		blockContext.offloadCondition = offloadCondition;
+	}
+	
 	public static void setProspectiveReminder() {
 		blockContext.prospectiveReminderSet = true;
 	}
@@ -87,6 +91,10 @@ public class IOtask1BlockContext {
 
 	public static int getClickedCircle() {
 		return (blockContext.clickedCircle);
+	}
+	
+	public static boolean incrementProgress() {
+		return (blockContext.incrementProgress);
 	}
 
 	// use these methods to set and find which side of the box the circle has been

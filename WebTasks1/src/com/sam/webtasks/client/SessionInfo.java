@@ -11,41 +11,25 @@ public class SessionInfo {
 	static int C3 = Names.REMINDERS_PROSPECTIVE_MANDATORY;
 	static int C4 = Names.REMINDERS_RETROSPECTIVE_MANDATORY;
 	
-	public static int[][] sequence = { {C1, C2, C3, C4}, 
-			 {C1, C2, C4, C3},
-			 {C1, C3, C2, C4},
-			 {C1, C3, C4, C2},
-			 {C1, C4, C2, C3},
-			 {C1, C4, C3, C2},
-			 {C2, C1, C3, C4},
-			 {C2, C1, C4, C3},
-			 {C2, C3, C1, C4},
-			 {C2, C3, C4, C1},
-			 {C2, C4, C1, C3},
-			 {C2, C4, C3, C1},
-			 {C3, C1, C2, C4},
-			 {C3, C1, C4, C2},
-			 {C3, C2, C1, C4},
-			 {C3, C2, C4, C1},
-			 {C3, C4, C1, C2},
-			 {C3, C4, C2, C1},
-			 {C4, C1, C2, C3},
-			 {C4, C1, C3, C2},
-			 {C4, C2, C1, C3},
-			 {C4, C2, C3, C1},
-			 {C4, C3, C1, C2},
-			 {C4, C3, C2, C1} };
+	public static int[][] sequence = { 
+			 {C2, C3, C4}, 
+			 {C2, C4, C3},
+			 {C3, C2, C4},
+			 {C3, C4, C2},
+			 {C4, C2, C3},
+			 {C4, C3, C2}	
+	};
 		
 	//are we just testing locally? set this to true if so and it won't try to log data to the database
-	public static boolean localTesting=false;
+	public static boolean localTesting=true;
 	public static boolean runInfoConsentPages=false; //should we do the info and consent pages?
 	public static int experimentType = Names.EXPERIMENT_PROLIFIC;
 	
 	//what is the name for this experiment?
-	public static String experimentCode="CS3";
+	public static String experimentCode="CS9";
 	
 	//which version of the experiment is this?
-	public static int experimentVersion=7;
+	public static int experimentVersion=1;
 	
 	//what is the minimum permitted screen size in pixels?
 	//if the screen is smaller than this the participant will be asked
@@ -69,7 +53,7 @@ public class SessionInfo {
 	//e.g. specifiedLevels = {-1, 2, -1}; would randomise factors 1 and 3, and set the second factor to level 2
 	//NB levels range from 0 to (maximum - 1)
 	public static String[] counterbalanceFactors = {"order"};
-	public static int[] counterbalanceLevels = {24};
+	public static int[] counterbalanceLevels = {6};
 	public static int[] specifiedLevels = {-1};
 	
 	/*************************************************/

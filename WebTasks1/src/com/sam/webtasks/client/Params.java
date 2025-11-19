@@ -14,4 +14,6 @@ public class Params {
 	public final static int pointsPerDollar=300;
 	public final static String basePayment="$2";
 	public final static int initialPoints=600;
+	
+	public static int chosenStrategy = 0;
 }
