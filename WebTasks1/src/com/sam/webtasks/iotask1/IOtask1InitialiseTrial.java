@@ -118,6 +118,10 @@ public class IOtask1InitialiseTrial {
 		//save the block context
 		IOtask1BlockContext.setContext(block);
 		
-		ClickPage.Run(instructions,  "Continue");
+		if (block.chooseOffloadCondition) {
+			ClickPage.Run_ChooseOffload(instructions);
+		} else {
+			ClickPage.Run(instructions,  "Continue");
+		}
 	}
 }

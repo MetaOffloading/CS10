@@ -353,7 +353,8 @@ public class SequenceHandler {
 					SequenceHandler.Next();
 				} else {
 					if (block.chooseOffloadCondition) {
-						IOtask1Block.ChooseStrategy();
+						//IOtask1Block.ChooseStrategy();
+						SequenceHandler.Next();
 					} else {
 						SequenceHandler.Next();
 					}
