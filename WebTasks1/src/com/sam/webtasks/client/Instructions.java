@@ -107,7 +107,7 @@ public class Instructions {
 			break;
 		case 10:
 			i = "You have now completed this part of the experiment.<br><br>"
-					+ "<b><a href=\"https://research.sc/participant/login/dynamic/4A829951-3246-446A-89E5-FD17232E6F51?external_id="
+					+ "<b><a href=\"https://research.sc/participant/login/dynamic/1854D249-65E3-492D-B8C5-55B56864DA00?external_id="
 					+ SessionInfo.participantID + "&external_session_id=" + SessionInfo.sessionKey + "\">"
 					+ "CLICK HERE</a></b> to continue.";
 		}

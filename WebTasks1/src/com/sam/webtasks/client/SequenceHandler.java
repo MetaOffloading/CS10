@@ -246,11 +246,11 @@ public class SequenceHandler {
 			case 25:
 				ProgressBar.Initialise();
 				ProgressBar.Show();
-				ProgressBar.SetProgress(0, 5);
+				ProgressBar.SetProgress(0, 10);
 				
 				IOtask1Block block9 = new IOtask1Block();
 				block9.nTargets = 3;
-				block9.nTrials = 5;
+				block9.nTrials = 10;
 				block9.chooseOffloadCondition = true;
 				block9.blockNum = 9;
 				block9.askArithmetic = true;
@@ -263,7 +263,10 @@ public class SequenceHandler {
 				data = data + SessionInfo.participantID + ",";
 				data = data + SessionInfo.gender + ",";
 				data = data + SessionInfo.age + ",";
-				data = data + Counterbalance.getFactorLevel("order");
+				data = data + Counterbalance.getFactorLevel("order") + ",";
+				data = data + Counterbalance.getFactorLevel("buttonOrder1") + ",";
+				data = data + Counterbalance.getFactorLevel("buttonOrder2") + ",";
+				data = data + Counterbalance.getFactorLevel("buttonOrder3");
 
 				PHP.UpdateStatus("finished");
 				PHP.logData("finish", data, true);

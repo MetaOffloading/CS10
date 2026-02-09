@@ -119,6 +119,7 @@ public class IOtask1InitialiseTrial {
 		IOtask1BlockContext.setContext(block);
 		
 		if (block.chooseOffloadCondition) {
+			instructions = instructions + "<br>Please select how you will remember these instructions:";
 			ClickPage.Run_ChooseOffload(instructions);
 		} else {
 			ClickPage.Run(instructions,  "Continue");

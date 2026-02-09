@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sam.webtasks.client.SequenceHandler;
+import com.sam.webtasks.iotask1.IOtask1Block;
 import com.sam.webtasks.iotask1.IOtask1BlockContext;
 
 public class ClickPage {
@@ -75,6 +76,8 @@ public class ClickPage {
 	}
 
 	public static void Run_ChooseOffload(String htmlText) {
+		final IOtask1Block block = IOtask1BlockContext.getContext();
+		
 		final HTML displayText = new HTML(htmlText);
 	    
 		final HorizontalPanel horizontalPanel = new HorizontalPanel();
@@ -102,10 +105,10 @@ public class ClickPage {
 
 	    //now add the buttons
 
-	    String noReminder = "I will just remember by myself";
-		String prospective = "Double-click the circles to turn them blue";
-		String retrospective = "Use the reminder button at the top to type in text";
-		String both = "Drag the circles next to where they are supposed to go";
+	    String noReminder = "I will just<br>remember by myself";
+		String prospective = "Double-click the<br>circles to turn them blue";
+		String retrospective = "Use the reminder button<br>at the top to type in text";
+		String both = "Drag the circles next to<br>where they are supposed to go";
 		
 		final Button noReminder_button = new Button(noReminder);
 		final Button prospective_button = new Button(prospective);
@@ -118,13 +121,62 @@ public class ClickPage {
 		
 		final VerticalPanel frame = new VerticalPanel();
 		
-		hPanel1.add(noReminder_button);
-		hPanel1.add(prospective_button);
-		hPanel2.add(retrospective_button);
-		hPanel2.add(both_button);
 		
-		vPanel.add(hPanel1);
-		vPanel.add(hPanel2);
+		vPanel.setHeight("100px");
+		hPanel1.setWidth("525px");
+		hPanel2.setWidth("525px");
+		noReminder_button.setWidth("250px");
+		prospective_button.setWidth("250px");
+		retrospective_button.setWidth("250px");
+		both_button.setWidth("250px");
+		
+		hPanel1.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
+		
+		if(Counterbalance.getFactorLevel("buttonOrder1") == 1) {
+			hPanel1.add(noReminder_button);
+		} else {
+			hPanel1.add(prospective_button);
+		}
+		
+		hPanel1.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+		
+		if(Counterbalance.getFactorLevel("buttonOrder1") == 0) {
+			hPanel1.add(noReminder_button);
+		} else {
+			hPanel1.add(prospective_button);
+		}
+		
+		hPanel2.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
+		
+		if(Counterbalance.getFactorLevel("buttonOrder2") == 1) {
+			hPanel2.add(retrospective_button);
+		} else {
+			hPanel2.add(both_button);
+		}
+		
+		hPanel2.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+
+		if(Counterbalance.getFactorLevel("buttonOrder2") == 0) {
+			hPanel2.add(retrospective_button);
+		} else {
+			hPanel2.add(both_button);
+		}
+		
+		vPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
+		
+		if(Counterbalance.getFactorLevel("buttonOrder3") == 1) {
+			vPanel.add(hPanel1);
+		} else {
+			vPanel.add(hPanel2);
+		}
+
+		vPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
+		
+		if(Counterbalance.getFactorLevel("buttonOrder3") == 0) {
+			vPanel.add(hPanel1);
+		} else {
+			vPanel.add(hPanel2);
+		}
 		
 		noReminder_button.addClickHandler(new ClickHandler() {
 	        public void onClick(ClickEvent event) {
@@ -132,7 +184,8 @@ public class ClickPage {
 	        	
 	        	RootPanel.get().remove(horizontalPanel);
 	        	
-	        	SequenceHandler.Next();
+	        	String data = block.blockNum + "," + block.currentTrial + ",1";
+	    		PHP.logData("strategyChoice", data, true);
 	        }
 		});
 		
@@ -142,6 +195,9 @@ public class ClickPage {
 	        	
 	        	RootPanel.get().remove(horizontalPanel);
 	        	
+	        	String data = block.blockNum + "," + block.currentTrial + ",2";
+	    		PHP.logData("strategyChoice", data, true);
+	    		
 	        	SequenceHandler.Next();
 	        }
 		});
@@ -152,6 +208,9 @@ public class ClickPage {
 	        	
 	        	RootPanel.get().remove(horizontalPanel);
 	        	
+	        	String data = block.blockNum + "," + block.currentTrial + ",3";
+	    		PHP.logData("strategyChoice", data, true);
+	        	
 	        	SequenceHandler.Next();
 	        }
 		});
@@ -161,6 +220,9 @@ public class ClickPage {
 	        	IOtask1BlockContext.setOffloadCondition(Names.REMINDERS_MANDATORY_ANYCIRCLE);
 	        	
 	        	RootPanel.get().remove(horizontalPanel);
+	        	
+	        	String data = block.blockNum + "," + block.currentTrial + ",4";
+	    		PHP.logData("strategyChoice", data, true);
 	        	
 	        	SequenceHandler.Next();
 	        }
