@@ -197,8 +197,6 @@ public class ClickPage {
 	        	
 	        	String data = block.blockNum + "," + block.currentTrial + ",2";
 	    		PHP.logData("strategyChoice", data, true);
-	    		
-	        	SequenceHandler.Next();
 	        }
 		});
 		
@@ -210,8 +208,6 @@ public class ClickPage {
 	        	
 	        	String data = block.blockNum + "," + block.currentTrial + ",3";
 	    		PHP.logData("strategyChoice", data, true);
-	        	
-	        	SequenceHandler.Next();
 	        }
 		});
 		
@@ -223,8 +219,6 @@ public class ClickPage {
 	        	
 	        	String data = block.blockNum + "," + block.currentTrial + ",4";
 	    		PHP.logData("strategyChoice", data, true);
-	        	
-	        	SequenceHandler.Next();
 	        }
 		});
 	     
